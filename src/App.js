@@ -57,7 +57,7 @@ function App() {
         }
         console.error('Error:', error);
       } else {
-        setSubmitMessage('¡Registro exitoso! Te esperamos en el webinar.');
+        setSubmitMessage('Registro exitoso. Te enviaremos link a webinar');
         setFormData({
           nombreCompleto: '',
           email: '',
@@ -269,7 +269,7 @@ function App() {
               </div>
               <div className="detail-item">
                 <span className="detail-icon">🕐</span>
-                <span>Hora: 19:00 - 21:00 hrs (Chile)</span>
+                <span>Hora: 19:00 - 20:00 hrs (Chile)</span>
               </div>
               <div className="detail-item">
                 <span className="detail-icon">💻</span>
@@ -361,38 +361,7 @@ function App() {
         </div>
       </section>
 
-      {/* Learning Outcomes */}
-      <section className="learning-section">
-        <div className="container">
-          <h3 className="section-title">🎯 Lo que aprenderás:</h3>
-          <div className="learning-grid">
-            <div className="learning-item">
-              <span className="check">✅</span>
-              <span>Cómo generar leads (prospectos) automáticamente</span>
-            </div>
-            <div className="learning-item">
-              <span className="check">✅</span>
-              <span>Estrategias de cold email que convierten</span>
-            </div>
-            <div className="learning-item">
-              <span className="check">✅</span>
-              <span>Seguimiento que transforma leads (prospectos) en ventas</span>
-            </div>
-            <div className="learning-item">
-              <span className="check">✅</span>
-              <span>Configuración de prospección 24/7</span>
-            </div>
-            <div className="learning-item">
-              <span className="check">✅</span>
-              <span>Medición de leads (prospectos) que generan ventas</span>
-            </div>
-            <div className="learning-item">
-              <span className="check">✅</span>
-              <span>Casos reales de crecimiento en ventas</span>
-            </div>
-          </div>
-        </div>
-      </section>
+
     </div>
   );
 }
