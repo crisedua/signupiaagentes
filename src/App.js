@@ -275,10 +275,7 @@ function App() {
                 <span className="detail-icon">💻</span>
                 <span>Modalidad: 100% Online (Zoom)</span>
               </div>
-              <div className="detail-item">
-                <span className="detail-icon">🎁</span>
-                <span>Bonus: Templates de emails + Guía de seguimiento</span>
-              </div>
+
             </div>
           </div>
           
