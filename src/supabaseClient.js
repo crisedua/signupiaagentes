@@ -1,20 +1,13 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.REACT_APP_SUPABASE_URL
-const supabaseKey = process.env.REACT_APP_SUPABASE_ANON_KEY
+const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || 'https://zsrsapmejaztlqfineob.supabase.co'
+const supabaseKey = process.env.REACT_APP_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpzcnNhcG1lamF6dGxxZmluZW9iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA4NjI1NDgsImV4cCI6MjA2NjQzODU0OH0.D8ClukFElRyzh5paVAq-GMjpnFnutoZyTOqYp8YP5d0'
 
-console.log('Environment check:', {
+console.log('Supabase config:', {
   hasUrl: !!supabaseUrl,
   hasKey: !!supabaseKey,
-  url: supabaseUrl ? supabaseUrl.substring(0, 20) + '...' : 'undefined'
+  urlPreview: supabaseUrl?.substring(0, 30) + '...',
+  usingFallback: !process.env.REACT_APP_SUPABASE_URL
 })
-
-if (!supabaseUrl || !supabaseKey) {
-  console.error('Missing Supabase environment variables:', {
-    REACT_APP_SUPABASE_URL: supabaseUrl,
-    REACT_APP_SUPABASE_ANON_KEY: supabaseKey ? 'EXISTS' : 'MISSING'
-  })
-  throw new Error(`Missing Supabase environment variables. URL: ${!!supabaseUrl}, Key: ${!!supabaseKey}`)
-}
 
 export const supabase = createClient(supabaseUrl, supabaseKey) 

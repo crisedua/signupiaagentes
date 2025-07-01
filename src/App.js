@@ -1,21 +1,16 @@
 import React, { useState } from 'react';
 import './App.css';
-
-let supabase = null;
-try {
-  const supabaseModule = require('./supabaseClient');
-  supabase = supabaseModule.supabase;
-} catch (error) {
-  console.error('Failed to load Supabase client:', error);
-}
+import { supabase } from './supabaseClient';
 
 function App() {
   // Debug info
-  console.log('App rendering, environment variables:', {
+  console.log('App rendering:', {
     NODE_ENV: process.env.NODE_ENV,
-    REACT_APP_SUPABASE_URL: process.env.REACT_APP_SUPABASE_URL ? 'SET' : 'NOT SET',
-    REACT_APP_SUPABASE_ANON_KEY: process.env.REACT_APP_SUPABASE_ANON_KEY ? 'SET' : 'NOT SET',
-    supabaseAvailable: !!supabase
+    timestamp: new Date().toISOString(),
+    envVarsSet: {
+      SUPABASE_URL: !!process.env.REACT_APP_SUPABASE_URL,
+      SUPABASE_KEY: !!process.env.REACT_APP_SUPABASE_ANON_KEY
+    }
   });
 
   const [formData, setFormData] = useState({
@@ -40,13 +35,6 @@ function App() {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitMessage('');
-
-    // Check if Supabase is available
-    if (!supabase) {
-      setSubmitMessage('El servicio de registro no está disponible temporalmente. Por favor, inténtalo más tarde.');
-      setIsSubmitting(false);
-      return;
-    }
 
     try {
       const { error } = await supabase
